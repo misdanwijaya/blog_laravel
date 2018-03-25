@@ -7,6 +7,8 @@ use App\User;
 
 class Posts extends Model
 {
+    protected $fillable = ['title','slug','author_id','excerpt','content'];
+
     function getImagePostAttribute(){
         $imgpath = "";
         if ($this->image != null){
