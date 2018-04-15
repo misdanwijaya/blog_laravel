@@ -44,11 +44,11 @@
                             <td>{{ $item->author->name}}</td>
                             <td>{{ $item->created_at}}</td>
                             <td>
-                                <a href="{{route('backend.blog.destroy',$item->id)}}" class="btn btn-danger btn-sm">
-                                    <i class="fa fa-trash"></i>Delete</a>
+                                {!! Form::open(['method'=>'DELETE','route'=>['backend.blog.delete_post',$item->id]]) !!}
+                                <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>Delete</a></button>
 
-                                <a href="{{route('backend.blog.edit',$item->id)}}" class="btn btn-info btn-sm">
-                                    <i class="fa fa-edit"></i>Edit</a>
+                                <a href="{{route('backend.blog.edit_dua',$item->id)}}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i>Edit</a>
+                                {!! Form::close() !!}
                             </td>
                         </tr>
                         @endforeach

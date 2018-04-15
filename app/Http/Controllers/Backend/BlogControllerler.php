@@ -72,7 +72,15 @@ class BlogControllerler extends BackendController
      */
     public function edit($id)
     {
-        //
+        $posts = Posts::findOrFail($id);
+        return view("backend.blog.edit",compact("posts"));
+    }
+
+    // hapus manual
+    public function edit_dua($id)
+    {
+        $posts = Posts::findOrFail($id);
+        return view("backend.blog.edit",compact("posts"));
     }
 
     /**
@@ -84,7 +92,18 @@ class BlogControllerler extends BackendController
      */
     public function update(Request $request, $id)
     {
-        //
+        $post = Posts::findOrFail($id);
+        $data = $request->all();
+        $post->update($data);
+        return redirect(route("backend.blog.index"))->with("message","Your Post was updated successfully");
+    }
+
+    public function update_post(Request $request, $id)
+    {
+        $post = Posts::findOrFail($id);
+        $data = $request->all();
+        $post->update($data);
+        return redirect(route("backend.blog.index"))->with("message","Your Post was updated successfully");
     }
 
     /**
@@ -95,6 +114,18 @@ class BlogControllerler extends BackendController
      */
     public function destroy($id)
     {
-        //
+        $posts = Posts::findOrFail($id);
+        $posts->delete();
+
+        return redirect(route("backend.blog.index"))->with("message","Your Post was updated successfully");
+    }
+
+    //untuk delete
+    public function delete_post($id)
+    {
+        $posts = Posts::findOrFail($id);
+        $posts->delete();
+
+        return redirect(route("backend.blog.index"))->with("message","Your Post was updated successfully");
     }
 }

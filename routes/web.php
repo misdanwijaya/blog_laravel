@@ -24,3 +24,15 @@ Route::get('/home', 'Backend\HomeController@index')->name('home');
 Route::resource('/backend/blog', 'Backend\BlogControllerler',[
     'as'=>'backend'
 ]);
+
+//untuk edit
+Route::get('/edit_post/{id}',['uses'=>'Backend\BlogControllerler@edit_dua',
+                              'as' => 'backend.blog.edit_dua']);
+
+//untuk memasukan data update
+Route::put('/update_post/{id}',['uses'=>'Backend\BlogControllerler@update_post',
+                              'as' => 'backend.blog.update_post']);
+
+//untuk delete post
+Route::delete('/delete_post/{id}',['uses'=>'Backend\BlogControllerler@delete_post',
+                              'as' => 'backend.blog.delete_post']);
